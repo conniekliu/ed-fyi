@@ -1,0 +1,9 @@
+<h1>Welcome to ed-fyi!</h1>
+
+<h3>Select a concept below to learn more about it! </h3>
+
+{{#each concept}}
+<form method="post" action="concept">
+<input class="btn btn-primary form-button" type="submit" name="concept" value={{name}}>
+</form>
+{{/each}}
