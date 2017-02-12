@@ -6,9 +6,9 @@ var conceptSchema = mongoose.Schema({
 	name: {type: String, required: true, index: true},
 	description: {type: String, required: true},
 	// timeline: {year: event/image object?},
-	content: [{type: Schema.ObjectId, ref: 'Content'}], //allow changing of content order!!
+	content: [{type: ObjectId, ref: 'Content'}], //allow changing of content order!!
 	sources: String,
-	refs: [{type: Schema.ObjectName, ref: 'Concept'}]
+	// refs: [{type: ObjectName, ref: 'Concept'}]
 });
 
 var conceptModel = mongoose.model("Concept", conceptSchema);
@@ -25,8 +25,9 @@ var Concepts = (function(conceptModel) {
 		conceptModel.find({}, (function(err, allConcepts) {
 			if (err) callback(err);
 			else {
-				names = allConcepts.map(function(x) return {name: x.name, refs: x.refs} );
-				callback(null, names);
+				// names = allConcepts.map(function(x) return {name: x.name, refs: x.refs} );
+				// names = [{name: "hello", description: "bye"}];
+				callback(null, allConcepts);
 			}
 		}));
 	};
@@ -37,11 +38,11 @@ var Concepts = (function(conceptModel) {
 	 * @param {Function} callback - called with array of concept information,
 	 * 		otherwise error
 	 */
-	that.getConcept = function(conceptName, callback) {
-		conceptModel.findOne({name: conceptName})
-			.populate({
-				path: 'content'
-			})
+	that.getConcept = function(conceptId, callback) {
+		conceptModel.findOne({_id: conceptId})
+			// .populate({
+			// 	path: 'content'
+			// })
 			.exec(function(err, conceptInfo) {
 				if (err) callback(err);
 				else callback(null, conceptInfo);
@@ -55,15 +56,25 @@ var Concepts = (function(conceptModel) {
 	 * 		otherwise error
 	 */
 	 // TODO: actually change this method to add a new concept, and think about how to add content
-	that.addConcept = function(conceptName, callback) {
-		conceptModel.findOne({name: conceptName})
-			.populate({
-				path: 'content'
-			})
-			.exec(function(err, conceptInfo) {
-				if (err) callback(err);
-				else callback(null, conceptInfo);
+	that.addConcept = function(conceptName, description, callback) {
+		var concept = new conceptModel({
+			name: conceptName,
+			description: description
 		});
+		concept.save(function(err, newConcept) {
+			if (err) callback({msg: err});
+			else callback(null, newConcept);
+		})
 	};
 
-});
+	// editConcept -- edit name/desc/resources
+
+	// updateConcept -- refs/content, for when admin updates/adds content not concept
+
+	Object.freeze(that);
+	return that;
+
+})(conceptModel);
+
+
+module.exports = Concepts;

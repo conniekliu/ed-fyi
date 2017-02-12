@@ -1,11 +1,13 @@
-<h1>{{name}}</h1>
+<div class="below">
+	<h1>{{name}}</h1>
 
-<p>{{description}}</p>
+	<p>{{description}}</p>
 
-{{#each content}}
-	<h3>{{content.title}}</h3>
-	<p>{{content.content}}</p>
-{{/each}}
+	{{#each content}}
+		<h3>{{content.title}}</h3>
+		<p>{{content.content}}</p>
+	{{/each}}
 
-<p> Sources: </p>
-<p> {{sources}} </p>
+	<p> Sources: </p>
+	<p> {{sources}} </p>
+</div>

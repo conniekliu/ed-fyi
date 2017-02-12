@@ -1,9 +1,14 @@
-<h1>Welcome to ed-fyi!</h1>
+<div class="below">
 
-<h3>Select a concept below to learn more about it! </h3>
+	<h1>Welcome to ed-fyi!</h1>
 
-{{#each concept}}
-<form method="post" action="concept">
-<input class="btn btn-primary form-button" type="submit" name="concept" value={{name}}>
-</form>
-{{/each}}
+	<h3>Select a concept below to learn more about it! </h3>
+	<br>
+
+	{{#each concepts}}
+	<form method="post" action="concept" class="conceptButton">
+	<button type="submit" name="id" value={{id}} class="btn btn-success">{{name}}</button>
+	</form>
+	{{/each}}
+
+</div>
