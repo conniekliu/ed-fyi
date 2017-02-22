@@ -1,0 +1,26 @@
+{
+  "nodes": [
+    {"id": "Standardized Testing", "popularity": 500, "color": 1},
+    {"id": "Teacher Unions", "popularity": 100, "color": 2},
+    {"id": "Charter Schools", "popularity": 1000, "color": 3},
+    {"id": "Blended Learning", "popularity": 250, "color": 4},
+    {"id": "Elite College Admissions", "popularity": 50, "color": 5},
+    {"id": "Teacher Autonomy", "popularity": 25, "color": 6},
+    {"id": "SES", "popularity": 500, "color": 7},
+    {"id": "Learning Styles", "popularity": 225, "color": 8},
+    {"id": "Personalized Learning", "popularity": 100, "color": 9},
+    {"id": "Teacher Training", "popularity": 100, "color": 10}
+
+  ],
+  "links": [
+    {"source": "Standardized Testing", "target": "Teacher Autonomy"},
+    {"source": "Standardized Testing", "target": "SES"},
+    {"source": "Charter Schools", "target": "Learning Styles"},
+    {"source": "Charter Schools", "target": "Standardized Testing"},
+    {"source": "Charter Schools", "target": "Teacher Unions"},
+    {"source": "Blended Learning", "target": "Charter Schools"},
+    {"source": "Blended Learning", "target": "Personalized Learning"},
+    {"source": "Teacher Autonomy", "target": "Teacher Training"},
+    {"source": "Standardized Testing", "target": "Elite College Admissions"}
+  ]
+}

@@ -1,3 +1,4 @@
+
 <div class="below">
 
 	<h1>Welcome to ed-fyi!</h1>
@@ -10,5 +11,17 @@
 	<button type="submit" name="id" value={{id}} class="btn btn-success">{{name}}</button>
 	</form>
 	{{/each}}
+	<svg width="600" height="400" id="graph"></svg>
+	<div id="timetest" style="text-align: "center"; width:50px;"></div>
 
 </div>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="/src/timeknots.js" type="application/javascript"></script>
+<script type="text/javascript" src="/js/noodle-map.js"></script>
+<script type="text/javascript" src="/js/timeline.js"></script>
+
+<script type="text/javascript">
+	noodle("graph");
+	timeline("timetest");
+</script>

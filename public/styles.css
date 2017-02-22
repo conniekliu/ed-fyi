@@ -51,3 +51,24 @@ body, h1, h2, h3, h4 {
 	width: 100%;
 }
 
+
+/******* d3 viz *******/
+.graph text {
+	font: 10px sans-serif;
+	text-anchor: middle;
+}
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+  stroke-width: 5px;
+}
+
+.nodes circle {
+  stroke: white;
+  stroke-width: 1.5px;
+}
+
+.blocks {
+
+}

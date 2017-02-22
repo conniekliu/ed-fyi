@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // associate html files with handlebars templating
 app.set('views', path.join(__dirname, 'views'));
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
+app.use('/js', express.static(path.join(__dirname, 'public/js')));
 var exphbs = require('express-handlebars');
 app.engine('.hbs', exphbs({defaultLayout: 'single', extname: '.hbs'}));
 app.set('view engine', '.hbs');
